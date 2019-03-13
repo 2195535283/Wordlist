@@ -309,11 +309,12 @@ void cchain() {
 			temp++;
 		head[i] = swords[i][0];
 		tail[i] = swords[i][temp - 1];
+		dist[i] = temp;
 		temp = 0;
 
 		//cout << head[i] << " " << tail[i] << endl;
 	}
-	// no -h and -c
+	// no -h and -t
 	if (hflag != 1 && tflag != 1) {
 		int t = 0;
 		int length1 = 0;
@@ -321,7 +322,13 @@ void cchain() {
 		int nowloca = 0;
 		int loca[30] = { 0 };
 		int nowca[30] = { 0 };
-		while (t < num) {
+		
+		for (int j = 0; j < num; j++) {
+			if (dist[j] > dist[t]) {
+				t = j;
+			}
+		}
+
 			char tt = tail[t];
 			loca[length1] = t;
 
@@ -352,7 +359,7 @@ void cchain() {
 			length1 = 0;
 			memset(loca, 0, 30 * sizeof(int));
 			t++;
-		}
+		
 
 		for (int m = 0; m <= nowlen; m++) {
 			outfile << swords[nowca[m]] << endl;
