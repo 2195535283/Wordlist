@@ -303,7 +303,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 	if (comm == 1 || comm == 2) {////-w,-c
 		for (i0 = father[vis[vcount]][0], i1 = father[i0][1]; i0 > 0; ) {
 			if (i1 != 0) {
-				printf("有自环\n");
+				//printf("有自环\n");
 				path[pathlen] = dis[i1][i1];
 				pathlen = pathlen + 1;
 			}
@@ -326,7 +326,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 
 		for (i0 = father[vis[vcount]][0], i1 = father[i0][1]; ; ) {
 			if (i1 != 0) {
-				printf("有自环\n");
+				//printf("有自环\n");
 				path[pathlen] = dis[i1][i1];
 				pathlen = pathlen + 1;
 			}
@@ -338,7 +338,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 				path[pathlen++] = dis[father[i0][0]][i0];
 				i1 = father[vis[vnum]][1];
 				if (i1 != 0) {
-					printf("有自环\n");
+					//printf("有自环\n");
 					path[pathlen] = dis[i1][i1];
 					pathlen = pathlen + 1;
 				}
@@ -360,7 +360,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 
 		for (i0 = vis[vnum], i1 = father[i0][1]; i0 > 0; ) {
 			if (i1 != 0) {
-				printf("有自环\n");
+				//printf("有自环\n");
 				path[pathlen] = dis[i1][i1];
 				pathlen = pathlen + 1;
 			}
@@ -388,7 +388,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 
 		for (i0 = vis[vnum_], i1 = father[i0][1];; ) {
 			if (i1 != 0) {
-				printf("有自环\n");
+				//printf("有自环\n");
 				path[pathlen] = dis[i1][i1];
 				pathlen = pathlen + 1;
 			}
@@ -400,7 +400,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 				path[pathlen++] = dis[father[i0][0]][i0];
 				i1 = father[vis[vnum]][1];
 				if (i1 != 0) {
-					printf("有自环\n");
+					//printf("有自环\n");
 					path[pathlen] = dis[i1][i1];
 					pathlen = pathlen + 1;
 				}
@@ -415,7 +415,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 	}
 
 	ofstream ofile;
-	ofile.open("BIN//solution.txt");
+	ofile.open("solution.txt");
 	for (i = pathlen - 1; i >= 0; i--) {
 		ofile << path[i] << "\n";
 	}

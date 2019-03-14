@@ -462,10 +462,39 @@ void judge() {
 
 int main(int argv, char *argc[])
 {
-	cout << argc[0] << endl;
+	for (int ar = 1; ar < argv; ar++) {
+		if (argc[ar][0] == '-') {
+			if (argc[ar][1] == 'w') {
+				wflag = 1;
+				if (argc[ar + 1][0] != '-') {
+					strcpy_s(cpath, argc[ar + 1]);
+				}
+			}
+			else if (argc[ar][1] == 'c') {
+				cflag = 1;
+				if (argc[ar + 1][0] != '-') {
+					strcpy_s(cpath, argc[ar + 1]);
+				}
+			}
+			else if (argc[ar][1] == 'r') {
+				rflag = 1;
+			}
+			else if (argc[ar][1] == 't') {
+				tflag = 1;
+				top = argc[ar + 1][0];
+			}
+			else if (argc[ar][1] == 'h') {
+				hflag = 1;
+				hop = argc[ar + 1][0];
+			}
+		}
 
-	outfile.open("BIN//solution.txt");
-	get_request();
+
+	}
+    
+	infile.open(cpath);
+	outfile.open("solution.txt");
+	//get_request();
 
 
 	
@@ -476,7 +505,7 @@ int main(int argv, char *argc[])
 		strcpy_s(swords[num++], word);
 		memset(word, 0, sizeof(word));
 	}
-
+	cout << "end" << endl;
 	judge();
 
 
