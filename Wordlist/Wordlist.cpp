@@ -505,7 +505,7 @@ int main(int argv, char *argc[])
 		strcpy_s(swords[num++], word);
 		memset(word, 0, sizeof(word));
 	}
-	cout << "end" << endl;
+	//cout << "end" << endl;
 	judge();
 
 
