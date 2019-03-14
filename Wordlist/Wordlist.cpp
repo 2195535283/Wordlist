@@ -208,14 +208,19 @@ void wchain() {
 	if (tflag != 1 && hflag == 1) {
 		int out[10000];
 		int outnum = 0;
-
-		out[outnum++] = topo[toponum - 1];
-		while (1) {
+		int count = 1;
+		while (count < toponum) {
+			out[outnum++] = topo[toponum - count];
 			while (prev[out[outnum - 1]] != -1) {
 				out[outnum++] = prev[out[outnum - 1]];
+				if (head[out[outnum - 1]] == hop) {
+					break;
+				}
 			}
-			
-		
+			if (head[out[outnum - 1]] == hop)
+				break;
+			outnum = 0;
+			count++;
 		}
 		for (int m = outnum - 1; m >= 0; m--) {
 			outfile << swords[out[m]] << endl;
@@ -225,77 +230,7 @@ void wchain() {
 
 }
 void cchain() {
-	char head[10000];
-	char tail[10000];
-	int dist[10000];
-	int temp = 0;
-
-
-	for (int i = 0; i < num; i++) {
-		while (isletter(swords[i][temp]))
-			temp++;
-		head[i] = swords[i][0];
-		tail[i] = swords[i][temp - 1];
-		dist[i] = temp;
-		temp = 0;
-
-		//cout << head[i] << " " << tail[i] << endl;
-	}
-
-	// no -h and -t
-	if (hflag != 1 && tflag != 1) {
-		int t;
-		t = 0;
-		int length1 = 0;
-		int nowlen = 0;
-		int nowloca = 0;
-		int loca[30] = { 0 };
-		int nowca[30] = { 0 };
-		
-		for (int j = 0; j < num; j++) {
-			if (dist[j] > dist[t]) {
-				t = j;
-				
-			}
-		}
-		cout << t << endl;
-			char tt = tail[t];
-			loca[length1] = t;
-
-			for (int j = 0; j < num; j++) {
-				if (head[j] == tt && j != t) {
-					int jxflag = 0;
-					for (int ttt = 0; ttt <= length1; ttt++) {
-						if (j == loca[ttt])
-							jxflag = 1;
-					}
-					if (jxflag == 1)
-						continue;
-
-					tt = tail[j];
-
-					length1++;
-					loca[length1] = j;
-					j = -1;
-				}
-			}
-
-			if (nowlen < length1) {
-				nowlen = length1;
-				nowloca = t;
-				for (int k = 0; k <= nowlen; k++)
-					nowca[k] = loca[k];
-			}
-			length1 = 0;
-			memset(loca, 0, 30 * sizeof(int));
-			t++;
-		
-
-		for (int m = 0; m <= nowlen; m++) {
-			outfile << swords[nowca[m]] << endl;
-		}
-
-	}
+	;
 
 }
 
@@ -315,7 +250,7 @@ void judge() {
 
 
 
-int main()
+int main(int argv, char *argc[])
 {
 
 
