@@ -462,9 +462,9 @@ void judge() {
 
 int main(int argv, char *argc[])
 {
+	cout << argc[0] << endl;
 
-
-	outfile.open("solution.txt");
+	outfile.open("BIN//solution.txt");
 	get_request();
 
 

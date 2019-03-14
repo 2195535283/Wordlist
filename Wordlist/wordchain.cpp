@@ -415,7 +415,7 @@ void getcchain(int comm, char spc1, char spc2, char *cpath)
 	}
 
 	ofstream ofile;
-	ofile.open("solution.txt");
+	ofile.open("BIN//solution.txt");
 	for (i = pathlen - 1; i >= 0; i--) {
 		ofile << path[i] << "\n";
 	}
