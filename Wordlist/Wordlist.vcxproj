@@ -162,6 +162,9 @@
     </ClCompile>
     <ClCompile Include="Wordlist.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CoreDll.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
